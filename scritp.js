@@ -74,7 +74,7 @@ function showQuestion() {
     document.getElementById("answer_4").innerHTML = question["answer_4"];
 }
 
-function answer(selection) {
+function answer(selection) { // Parameter ist leer und wird erst befüllt, sobald die Funktion aufgerufen wird.
     let question = questions[currentQuestion]; //in questions ist die aktuelle Frage gespeichert
     console.log("Selected answer is", selection); // hier wird die ausgewählte Antwort angezeigt
     let selectedQuestionNumber = selection.slice(-1); // in selection ist ja answer_1 , answer_2,..., auf das bezieht es sich.
@@ -84,8 +84,11 @@ function answer(selection) {
     if (selectedQuestionNumber == question["right_answer"]) {
         // wenn das der Fall ist, ...
         console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
+        document.getElementById(selection).parentNode.classList.add('bg-success'); // CSS wird hinzugefügt, das richtige Feld wird grün. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
     } else {
         // und wenn das ganze Falsch ist
         console.log("Falsche Antwort!!!"); // dann loggen wir aus: Falsche Antwort!!!
+                document.getElementById(selection).parentNode.classList.add('bg-danger'); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
+
     }
 }

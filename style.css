@@ -29,3 +29,8 @@ body {
 
 
 }
+
+.bg-success, .bg-danger {
+
+    color: white;
+}
