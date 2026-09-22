@@ -74,10 +74,18 @@ function showQuestion() {
     document.getElementById("answer_4").innerHTML = question["answer_4"];
 }
 
-function answer(selection){
-
-console.log('Selcted answer is ', selection);
-
-
-
+function answer(selection) {
+    let question = questions[currentQuestion]; //in questions ist die aktuelle Frage gespeichert
+    console.log("Selected answer is", selection); // hier wird die ausgewählte Antwort angezeigt
+    let selectedQuestionNumber = selection.slice(-1); // in selection ist ja answer_1 , answer_2,..., auf das bezieht es sich.
+    console.log("selectedQuestionNumber is", selectedQuestionNumber);
+    // console.log('Current question is', question); // hier werden alle Informationen der Frage angezeigt
+    console.log("Current question is", question["right_answer"]); // hier greife ich auf das Feld right_answer zu.
+    if (selectedQuestionNumber == question["right_answer"]) {
+        // wenn das der Fall ist, ...
+        console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
+    } else {
+        // und wenn das ganze Falsch ist
+        console.log("Falsche Antwort!!!"); // dann loggen wir aus: Falsche Antwort!!!
+    }
 }
