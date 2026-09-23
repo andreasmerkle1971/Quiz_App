@@ -95,4 +95,5 @@ let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo
         document.getElementById(selection).parentNode.classList.add("bg-danger"); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
         document.getElementById(idOfRightAndwer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
     }
+    document.getElementById("next-button").disabled=false;
 }
