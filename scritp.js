@@ -62,16 +62,18 @@ let currentQuestion = 0;
 
 function init() {
     document.getElementById("all-questions").innerHTML = questions.length;
+    
     showQuestion();
 }
 
 function showQuestion() {
     let question = questions[currentQuestion];
-    document.getElementById("questionText").innerHTML = question["question"];
-    document.getElementById("answer_1").innerHTML = question["answer_1"];
-    document.getElementById("answer_2").innerHTML = question["answer_2"];
-    document.getElementById("answer_3").innerHTML = question["answer_3"];
-    document.getElementById("answer_4").innerHTML = question["answer_4"];
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    document.getElementById('question-number').innerHTML = currentQuestion +1; // Nummer der aktuellen Frage wird angezeigt
 }
 
 function answer(selection) {
@@ -100,11 +102,17 @@ let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo
 
 function nextQuestion(){
    currentQuestion++; // hier werden die nächsten 4 Fragen angefordert.
-    showQuestion(); // hier werden die nächsten Fragen angezeigt.
-    document.getElementById('next-button').disabled=true;
+   document.getElementById('next-button').disabled=true;
+   resetAnswerButtons();
+   showQuestion(); // hier werden die nächsten Fragen angezeigt.
 
-    document.getElementById('answer_1').parentNode.classList.remove("bg-danger"); // classList, um auf alle css Eigenschaften in bootstrap zuzugreifen, mit remove wird die Eigenschaft gelöscht.
-    document.getElementById('answer_1').parentNode.classList.remove("bg-success");
+}
+
+function resetAnswerButtons (){
+
+// @ts-ignore
+document.getElementById('answer_1').parentNode.classList.remove("bg-danger"); // classList, um auf alle css Eigenschaften in bootstrap zuzugreifen, mit remove wird die Eigenschaft gelöscht.
+document.getElementById('answer_1').parentNode.classList.remove("bg-success");
 document.getElementById('answer_2').parentNode.classList.remove("bg-danger");
 document.getElementById('answer_2').parentNode.classList.remove("bg-success");
 document.getElementById('answer_3').parentNode.classList.remove("bg-danger");
