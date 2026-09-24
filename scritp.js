@@ -1,4 +1,4 @@
-let questions = [
+let questions = [ //ist wie ein riesiges Regal, wo alle Questions drin sind
     {
         question: "Wer hat HTML erfunden?",
         answer_1: "Robbi Williams",
@@ -95,5 +95,22 @@ let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo
         document.getElementById(selection).parentNode.classList.add("bg-danger"); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
         document.getElementById(idOfRightAndwer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
     }
-    document.getElementById("next-button").disabled=false;
+    document.getElementById('next-button').disabled=false;
+}
+
+function nextQuestion(){
+   currentQuestion++; // hier werden die nächsten 4 Fragen angefordert.
+    showQuestion(); // hier werden die nächsten Fragen angezeigt.
+    document.getElementById('next-button').disabled=true;
+
+    document.getElementById('answer_1').parentNode.classList.remove("bg-danger"); // classList, um auf alle css Eigenschaften in bootstrap zuzugreifen, mit remove wird die Eigenschaft gelöscht.
+    document.getElementById('answer_1').parentNode.classList.remove("bg-success");
+document.getElementById('answer_2').parentNode.classList.remove("bg-danger");
+document.getElementById('answer_2').parentNode.classList.remove("bg-success");
+document.getElementById('answer_3').parentNode.classList.remove("bg-danger");
+document.getElementById('answer_3').parentNode.classList.remove("bg-success");
+document.getElementById('answer_4').parentNode.classList.remove("bg-danger");
+document.getElementById('answer_4').parentNode.classList.remove("bg-success");
+
+
 }
