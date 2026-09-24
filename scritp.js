@@ -58,6 +58,8 @@ let questions = [ //ist wie ein riesiges Regal, wo alle Questions drin sind
     },
 ];
 
+let rightQuestions = 0;
+
 let currentQuestion = 0;
 
 function init() {
@@ -71,6 +73,8 @@ function showQuestion() {
         // TODO: Show End Screen
         document.getElementById('endScreen').style = ''; // endscreen wird nach questionBody angezeigt
         document.getElementById('questionBody').style = 'display: none';
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
     } else {
         let question = questions[currentQuestion];
         document.getElementById("questionText").innerHTML = question["question"];
@@ -97,6 +101,7 @@ let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo
         // wenn das der Fall ist, ...
         console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
         document.getElementById(selection).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
+        rightQuestions++;
     } else {
         // und wenn das ganze Falsch ist
         console.log("Falsche Antwort!!!"); // dann loggen wir aus: Falsche Antwort!!!

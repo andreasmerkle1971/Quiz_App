@@ -22,15 +22,19 @@ body {
     padding-top: 12px;
 }
 
-.quiz-answer-card:hover{
-
+.quiz-answer-card:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);
-
-
 }
 
-.bg-success, .bg-danger {
-
+.bg-success,
+.bg-danger {
     color: white !important;
+}
+
+.width-100 {
+    width: 100%;
+}
+.text-center {
+    text-align: center;
 }
