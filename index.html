@@ -28,15 +28,15 @@
         </nav>
         <div class="container">
             <div class="card quiz-card">
-                <img src="./img/pencil.jpg" class="card-img-top" alt="Foto" />
+                <img src="./img/pencil.jpg" id="header-image" class="card-img-top" alt="Foto"
+                /><!--müssen auf src zugreifen um bild zu ändern-->
                 <div class="card-body" id="endScreen" style="display: none">
                     <!--Wechsel zwischen endScreen und questionBody-->
-                    <div class="text-center">Quiz beendet!</div>
-                    <div>
-                        <img class="width-100"  src="./img/trophy.svg" alt="Foto Trophäe" />
-                    </div>
-                    <div class="text-center">
-                        Du hast <b id="amount-of-right-questions">XXX</b> Fragen von <b id="amount-of-questions" >XXX</b> Antworten richtig
+                    <div class="text-center final-headline">Quiz beendet!</div>
+
+                    <div class="text-center" >
+                        Du hast <b id="amount-of-right-questions">XXX</b> Fragen
+                        von <b id="amount-of-questions">XXX</b> richtig
                         beantwortet.
                     </div>
                 </div>

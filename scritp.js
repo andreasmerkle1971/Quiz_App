@@ -1,4 +1,5 @@
-let questions = [ //ist wie ein riesiges Regal, wo alle Questions drin sind
+let questions = [
+    //ist wie ein riesiges Regal, wo alle Questions drin sind
     {
         question: "Wer hat HTML erfunden?",
         answer_1: "Robbi Williams",
@@ -64,17 +65,18 @@ let currentQuestion = 0;
 
 function init() {
     document.getElementById("all-questions").innerHTML = questions.length;
-    
+
     showQuestion();
 }
 
 function showQuestion() {
     if (currentQuestion >= questions.length) {
         // TODO: Show End Screen
-        document.getElementById('endScreen').style = ''; // endscreen wird nach questionBody angezeigt
-        document.getElementById('questionBody').style = 'display: none';
-        document.getElementById('amount-of-questions').innerHTML = questions.length;
-        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
+        document.getElementById("endScreen").style = ""; // endscreen wird nach questionBody angezeigt
+        document.getElementById("questionBody").style = "display: none";
+        document.getElementById("amount-of-questions").innerHTML = questions.length;
+        document.getElementById("amount-of-right-questions").innerHTML = rightQuestions;
+        document.getElementById('header-image').src = "./img/trophy.svg";
     } else {
         let question = questions[currentQuestion];
         document.getElementById("questionText").innerHTML = question["question"];
@@ -82,7 +84,8 @@ function showQuestion() {
         document.getElementById("answer_2").innerHTML = question["answer_2"];
         document.getElementById("answer_3").innerHTML = question["answer_3"];
         document.getElementById("answer_4").innerHTML = question["answer_4"];
-        document.getElementById("question-number").innerHTML = currentQuestion + 1; // Nummer der aktuellen Frage wird angezeigt
+        document.getElementById("question-number").innerHTML =
+            currentQuestion + 1; // Nummer der aktuellen Frage wird angezeigt
     }
 }
 
@@ -93,11 +96,11 @@ function answer(selection) {
     let selectedQuestionNumber = selection.slice(-1); // in selection ist ja answer_1 , answer_2,..., auf das bezieht es sich.
     console.log("selectedQuestionNumber is", selectedQuestionNumber);
     // console.log('Current question is', question); // hier werden alle Informationen der Frage angezeigt
-    console.log("Current question is", question['right_answer']); // hier greife ich auf das Feld right_answer zu.
+    console.log("Current question is", question["right_answer"]); // hier greife ich auf das Feld right_answer zu.
 
-let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo  die richtigen Antwort steht
+    let idOfRightAndwer = `answer_${question["right_answer"]}`; // Eine Variable, wo  die richtigen Antwort steht
 
-    if (selectedQuestionNumber == question['right_answer']) {
+    if (selectedQuestionNumber == question["right_answer"]) {
         // wenn das der Fall ist, ...
         console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
         document.getElementById(selection).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
@@ -108,28 +111,24 @@ let idOfRightAndwer = `answer_${question['right_answer']}`; // Eine Variable, wo
         document.getElementById(selection).parentNode.classList.add("bg-danger"); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
         document.getElementById(idOfRightAndwer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
     }
-    document.getElementById('next-button').disabled=false;
+    document.getElementById("next-button").disabled = false;
 }
 
-function nextQuestion(){
-   currentQuestion++; // hier werden die nächsten 4 Fragen angefordert.
-   document.getElementById('next-button').disabled=true;
-   resetAnswerButtons();
-   showQuestion(); // hier werden die nächsten Fragen angezeigt.
-
+function nextQuestion() {
+    currentQuestion++; // hier werden die nächsten 4 Fragen angefordert.
+    document.getElementById("next-button").disabled = true;
+    resetAnswerButtons();
+    showQuestion(); // hier werden die nächsten Fragen angezeigt.
 }
 
-function resetAnswerButtons (){
-
-// @ts-ignore
-document.getElementById('answer_1').parentNode.classList.remove("bg-danger"); // classList, um auf alle css Eigenschaften in bootstrap zuzugreifen, mit remove wird die Eigenschaft gelöscht.
-document.getElementById('answer_1').parentNode.classList.remove("bg-success");
-document.getElementById('answer_2').parentNode.classList.remove("bg-danger");
-document.getElementById('answer_2').parentNode.classList.remove("bg-success");
-document.getElementById('answer_3').parentNode.classList.remove("bg-danger");
-document.getElementById('answer_3').parentNode.classList.remove("bg-success");
-document.getElementById('answer_4').parentNode.classList.remove("bg-danger");
-document.getElementById('answer_4').parentNode.classList.remove("bg-success");
-
-
+function resetAnswerButtons() {
+    // @ts-ignore
+    document.getElementById("answer_1").parentNode.classList.remove("bg-danger"); // classList, um auf alle css Eigenschaften in bootstrap zuzugreifen, mit remove wird die Eigenschaft gelöscht.
+    document.getElementById("answer_1").parentNode.classList.remove("bg-success");
+    document.getElementById("answer_2").parentNode.classList.remove("bg-danger");
+    document.getElementById("answer_2").parentNode.classList.remove("bg-success");
+    document.getElementById("answer_3").parentNode.classList.remove("bg-danger");
+    document.getElementById("answer_3").parentNode.classList.remove("bg-success");
+    document.getElementById("answer_4").parentNode.classList.remove("bg-danger");
+    document.getElementById("answer_4").parentNode.classList.remove("bg-success");
 }
