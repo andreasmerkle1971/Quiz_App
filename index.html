@@ -28,13 +28,28 @@
         </nav>
         <div class="container">
             <div class="card quiz-card">
-                <img src="./img/pencil.jpg" id="header-image" class="card-img-top" alt="Foto"
-                /><!--müssen auf src zugreifen um bild zu ändern-->
+                <!--müssen auf src zugreifen um bild zu ändern-->
+                <img
+                    src="./img/pencil.jpg"
+                    id="header-image"
+                    class="card-img-top"
+                    alt="Foto"
+                />
+                <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Example with label"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                >
+                    <div class="progress-bar" id="progress-bar" style="width: 0%">25%</div>
+                </div>
                 <div class="card-body" id="endScreen" style="display: none">
                     <!--Wechsel zwischen endScreen und questionBody-->
                     <div class="text-center final-headline">Quiz beendet!</div>
 
-                    <div class="text-center" >
+                    <div class="text-center">
                         Du hast <b id="amount-of-right-questions">XXX</b> Fragen
                         von <b id="amount-of-questions">XXX</b> richtig
                         beantwortet.
