@@ -45,3 +45,10 @@ body {
 #header-image {
     padding: 50px;
 }
+
+.button-row{
+    display: flex;
+    justify-content: center;
+    margin-top :10px;
+
+}

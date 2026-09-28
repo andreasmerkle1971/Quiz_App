@@ -140,3 +140,15 @@ function resetAnswerButtons() {
     document.getElementById("answer_4").parentNode.classList.remove("bg-danger");
     document.getElementById("answer_4").parentNode.classList.remove("bg-success");
 }
+
+function restartGame(){
+document.getElementById('header-image').src = './img/pencil.jpg';
+ document.getElementById("questionBody").style = ''; // questionBody wieder anzeigen
+  document.getElementById("endScreen").style = 'display: none'; // endScreen ausblenden
+
+
+rightQuestions = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
+currentQuestion = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
+init();
+
+}
