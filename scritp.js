@@ -60,8 +60,10 @@ let questions = [
 ];
 
 let rightQuestions = 0;
-
 let currentQuestion = 0;
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_WRONG = new Audio('audio/wrong.mp3');
+
 
 function init() {
     document.getElementById("all-questions").innerHTML = questions.length;
@@ -112,12 +114,15 @@ function answer(selection) {
         // wenn das der Fall ist, ...
         console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
         document.getElementById(selection).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
+        AUDIO_SUCCESS.play();
         rightQuestions++;
+        
     } else {
         // und wenn das ganze Falsch ist
         console.log("Falsche Antwort!!!"); // dann loggen wir aus: Falsche Antwort!!!
         document.getElementById(selection).parentNode.classList.add("bg-danger"); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
         document.getElementById(idOfRightAndwer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
+   AUDIO_WRONG.play();
     }
     document.getElementById("next-button").disabled = false;
 }
