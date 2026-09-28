@@ -43,7 +43,13 @@
                     aria-valuemin="0"
                     aria-valuemax="100"
                 >
-                    <div class="progress-bar" id="progress-bar" style="width: 0%">25%</div>
+                    <div
+                        class="progress-bar"
+                        id="progress-bar"
+                        style="width: 0%"
+                    >
+                        25%
+                    </div>
                 </div>
                 <div class="card-body" id="endScreen" style="display: none">
                     <!--Wechsel zwischen endScreen und questionBody-->
@@ -55,13 +61,10 @@
                         beantwortet.
                     </div>
                     <div class="button-row">
-
-
-                        <button
-                                onclick="restartGame()"
-                                class="btn btn-primary">Erneut spielen</button>
+                        <button onclick="restartGame()" class="btn btn-primary">
+                            Erneut spielen
+                        </button>
                     </div>
-                    
                 </div>
                 <div class="card-body" id="questionBody">
                     <h5 class="card-title" id="questionText">Frage</h5>

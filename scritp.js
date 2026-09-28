@@ -61,41 +61,52 @@ let questions = [
 
 let rightQuestions = 0;
 let currentQuestion = 0;
-let AUDIO_SUCCESS = new Audio('audio/success.mp3');
-let AUDIO_WRONG = new Audio('audio/wrong.mp3');
-
+let AUDIO_SUCCESS = new Audio("audio/success.mp3");
+let AUDIO_WRONG = new Audio("audio/wrong.mp3");
 
 function init() {
     document.getElementById("all-questions").innerHTML = questions.length;
-
     showQuestion();
 }
 
 function showQuestion() {
-    if (currentQuestion >= questions.length) {
-        // TODO: Show End Screen
+    if (gameIsOver()) {
+        showEndScreen();
+    } else {
+        updateProgressBar();
+        updateToNextQuestion();
+    }
+
+    function gameIsOver() {
+        // Funktion gibt true oder false aus
+        return currentQuestion >= questions.length; //in dieser Funktion kommt einfach nur die Validierung des Ausdrucks heraus
+    }
+
+    function showEndScreen() {
         document.getElementById("endScreen").style = ""; // endscreen wird nach questionBody angezeigt
         document.getElementById("questionBody").style = "display: none";
-        document.getElementById("amount-of-questions").innerHTML = questions.length;
-        document.getElementById("amount-of-right-questions").innerHTML = rightQuestions;
-        document.getElementById('header-image').src = "./img/trophy.svg";
-    } else { // show question
+        document.getElementById("amount-of-questions").innerHTML =
+            questions.length;
+        document.getElementById("amount-of-right-questions").innerHTML =
+            rightQuestions;
+        document.getElementById("header-image").src = "./img/trophy.svg";
+    }
 
+    function updateProgressBar() {
         let percent = (currentQuestion + 1) / questions.length;
         percent = Math.round(percent * 100);
-        document.getElementById('progress-bar').innerHTML = `${percent} % `;
-        document.getElementById('progress-bar').style = `width: ${percent}%`;
+        document.getElementById("progress-bar").innerHTML = `${percent} % `;
+        document.getElementById("progress-bar").style = `width: ${percent}%`;
+    }
 
-        console.log('Fortschritt:', percent);
-
+    function updateToNextQuestion() {
         let question = questions[currentQuestion];
         document.getElementById("questionText").innerHTML = question["question"];
         document.getElementById("answer_1").innerHTML = question["answer_1"];
         document.getElementById("answer_2").innerHTML = question["answer_2"];
         document.getElementById("answer_3").innerHTML = question["answer_3"];
         document.getElementById("answer_4").innerHTML = question["answer_4"];
-        document.getElementById("question-number").innerHTML =
-            currentQuestion + 1; // Nummer der aktuellen Frage wird angezeigt
+        document.getElementById("question-number").innerHTML = currentQuestion + 1; // Nummer der aktuellen Frage wird angezeigt
     }
 }
 
@@ -108,23 +119,26 @@ function answer(selection) {
     // console.log('Current question is', question); // hier werden alle Informationen der Frage angezeigt
     console.log("Current question is", question["right_answer"]); // hier greife ich auf das Feld right_answer zu.
 
-    let idOfRightAndwer = `answer_${question["right_answer"]}`; // Eine Variable, wo  die richtigen Antwort steht
+    let idOfRightAnswer = `answer_${question["right_answer"]}`; // Eine Variable, wo  die richtigen Antwort steht
 
-    if (selectedQuestionNumber == question["right_answer"]) {
+    if (rightAnswerSelected(selectedQuestionNumber)) {
         // wenn das der Fall ist, ...
         console.log("Richtige Antwort!!"); //dann sagen wir richtige Antwort.
         document.getElementById(selection).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
         AUDIO_SUCCESS.play();
         rightQuestions++;
-        
     } else {
         // und wenn das ganze Falsch ist
         console.log("Falsche Antwort!!!"); // dann loggen wir aus: Falsche Antwort!!!
         document.getElementById(selection).parentNode.classList.add("bg-danger"); // CSS wird hinzugefügt, das falsche Feld wird rot. Mit parentNode wird es dem darüberliegenden Div zugeordnet.
-        document.getElementById(idOfRightAndwer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
-   AUDIO_WRONG.play();
+        document.getElementById(idOfRightAnswer).parentNode.classList.add("bg-success"); // CSS wird hinzugefügt, das richtige Feld wird grün angezeigt.
+        AUDIO_WRONG.play();
     }
     document.getElementById("next-button").disabled = false;
+
+    function rightAnswerSelected(selectedQuestionNumber) {
+        return selectedQuestionNumber == question["right_answer"]; //Funktion benötigt eine Variable, die sich in der übergeordneten Funktion befindet.
+    }
 }
 
 function nextQuestion() {
@@ -146,14 +160,12 @@ function resetAnswerButtons() {
     document.getElementById("answer_4").parentNode.classList.remove("bg-success");
 }
 
-function restartGame(){
-document.getElementById('header-image').src = './img/pencil.jpg';
- document.getElementById("questionBody").style = ''; // questionBody wieder anzeigen
-  document.getElementById("endScreen").style = 'display: none'; // endScreen ausblenden
+function restartGame() {
+    document.getElementById("header-image").src = "./img/pencil.jpg";
+    document.getElementById("questionBody").style = ""; // questionBody wieder anzeigen
+    document.getElementById("endScreen").style = "display: none"; // endScreen ausblenden
 
-
-rightQuestions = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
-currentQuestion = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
-init();
-
+    rightQuestions = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
+    currentQuestion = 0; // Variable wird nicht definiert, sondern der alte Wert wird überschrieben
+    init();
 }
